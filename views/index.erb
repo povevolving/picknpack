@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>Pick-n-Pass</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <audio>
+      <source src="/ding.wav" type="audio/wav">
+    </audio>
+
+    <form method="post" action="/">
+      <input type="file" name="file" />
+      <input type="submit" />
+    </form>
+
+    <script>
+      $(function(){
+        // $("audio").get(0).play();
+      })
+    </script>
+  </body>
+</html>
