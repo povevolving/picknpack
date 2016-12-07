@@ -1,8 +1,8 @@
 require 'sinatra'
 require 'csv'
 
-# set :port, 80
-# set :environment, :production
+set :port, 80
+set :environment, :production
 
 get '/' do
   erb :index
