@@ -1,13 +1,18 @@
 require 'sinatra'
 require 'csv'
 
+# set :port, 80
+# set :environment, :production
+
 get '/' do
   erb :index
 end
 
 post '/' do
-  parsed_csv = CSV.read(params[:file])
-  
+
+  logger.info params[:file].inspect
+
+  parsed_csv = CSV.read(params[:file][:tempfile])  
 
   # Remove header row, assign indexes
   header_row = parsed_csv.shift
