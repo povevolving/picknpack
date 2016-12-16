@@ -1,0 +1,35 @@
+<div style="visibility:hidden; opacity:0" id="dropzone">
+    <div id="textnode">Drop anywhere!</div>
+</div>
+
+<audio>
+  <source src="/ding.wav" type="audio/wav">
+</audio>
+
+<%= form_for Batch.new do |f| %>
+  <%= f.file_field :csv_original %>
+  <%= f.submit "Upload File" %>
+<% end %>
+
+<script>
+  $(function(){
+    // $("audio").get(0).play();
+  })
+</script>
+
+<div class="batches">
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Filename</th>
+      <th>Print</th>
+    </tr>
+    <% @batches.each do |batch| %>
+      <tr>
+        <td><%= batch.created_at %></td>
+        <td><%= link_to batch.csv_processed.original_filename, batch.csv_processed.url %></td>
+        <td><%= batch.label_printed? %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
