@@ -1,4 +1,4 @@
-require 'CSV'
+require 'csv'
 
 class Batch < ApplicationRecord
   has_attached_file :csv_original
