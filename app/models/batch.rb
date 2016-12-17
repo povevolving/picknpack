@@ -7,6 +7,8 @@ class Batch < ApplicationRecord
   validates_attachment_content_type :csv_original, :not => %w(application/exe)
   validates_attachment_content_type :csv_processed, :not => %w(application/exe)
 
+  after_create :process_original_csv!
+
   def process_original_csv!
 
     csv_string = Paperclip.io_adapters.for(csv_original).read
@@ -52,6 +54,7 @@ class Batch < ApplicationRecord
 
     self.csv_processed = StringIO.new(generated_csv)
     self.csv_processed_file_name = csv_original.original_filename.gsub(/\.csv/, '_processed.csv')
+    
     save
   end
 
@@ -69,7 +72,7 @@ class Batch < ApplicationRecord
     options['expireAfter'] = 120000
     options['qty'] = 1
 
-    line_items[0...3].each do |line_item|
+    line_items.each do |line_item|
 
       html = ApplicationController.render(:partial => "batches/label", :locals => line_item)
 

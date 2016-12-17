@@ -1,5 +1,5 @@
 <div style="visibility:hidden; opacity:0" id="dropzone">
-    <div id="textnode">Drop anywhere!</div>
+    <div id="textnode">Drop to process!</div>
 </div>
 
 <audio>
@@ -17,6 +17,8 @@
   })
 </script>
 
+<h1>Pick-n-Pack</h1>
+
 <div class="batches">
   <table>
     <tr>
@@ -26,9 +28,22 @@
     </tr>
     <% @batches.each do |batch| %>
       <tr>
-        <td><%= batch.created_at %></td>
-        <td><%= link_to batch.csv_processed.original_filename, batch.csv_processed.url %></td>
-        <td><%= batch.label_printed? %></td>
+        <td><%= batch.created_at.strftime("%m/%d") %></td>
+
+        <td class="filename">
+          <%= link_to svg_icon_tag(:history), batch.csv_original.url, :title => "Download original CSV" %>
+          <%= link_to batch.csv_original.original_filename, batch.csv_processed.url %>
+        </td>
+
+        <td class="print-labels <%= 'labels-printed' if batch.label_printed? %>">
+          <%= link_to print_labels_path(batch.id) do %>
+            <%= svg_icon_tag :print %>
+            
+            <% if batch.label_printed? %>
+              <span class="check"><%= svg_icon_tag :circle_checkmark %></span>
+            <% end %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </table>

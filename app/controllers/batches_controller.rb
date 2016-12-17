@@ -9,6 +9,16 @@ class BatchesController < ApplicationController
     redirect_to :back
   end
 
+  def print_labels
+    @batch = Batch.find(params[:id])
+    @batch.print_labels!
+
+    respond_to do |format|
+      format.html { redirect_back fallback_location: '/' }
+      format.js  { render :nothing => true, :status => 200 }
+    end    
+  end
+
   def test_label
     line_item = Batch.first.line_items_for_printing.first
     html = ApplicationController.render(:partial => "batches/label", :locals => line_item)

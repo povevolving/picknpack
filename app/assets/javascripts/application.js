@@ -64,3 +64,13 @@ window.addEventListener("drop", function (e) {
         $("#batch_csv_original").parents("form").submit();
     }
 });
+
+$(document).on("click", ".print-labels a", function(){
+  $(this).parents("td").addClass("printing");
+
+  $.get($(this).attr('href'), (function(){
+    Turbolinks.visit( window.location );
+  }));
+
+  return false;
+})

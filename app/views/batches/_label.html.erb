@@ -6,7 +6,7 @@
   require 'barby/outputter/png_outputter'
 
   order_number_barcode = Barby::Code128B.new(order_number)
-  order_number_barcode = Barby::PngOutputter.new(order_number_barcode).to_png(:ydim => 20, :height => 20)
+  order_number_barcode = Barby::PngOutputter.new(order_number_barcode).to_png(:height => 30, :xdim => 2)
 
   encoded_number = Base64.encode64(order_number_barcode)
 %>
@@ -15,7 +15,7 @@
   <head>
     <style>
       div {
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         font-size: 16px;
         font-family: sans-serif;
       }
