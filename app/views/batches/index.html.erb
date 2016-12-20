@@ -2,10 +2,10 @@
     <div id="textnode">Drop to process!</div>
 </div>
 
-<audio>
+<!-- <audio>
   <source src="/ding.wav" type="audio/wav">
 </audio>
-
+ -->
 <%= form_for Batch.new do |f| %>
   <%= f.file_field :csv_original %>
   <%= f.submit "Upload File" %>
