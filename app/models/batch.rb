@@ -4,8 +4,8 @@ class Batch < ApplicationRecord
   has_attached_file :csv_original
   has_attached_file :csv_processed
 
-  validates_attachment_content_type :csv_original, content_type: ['text/plain', 'text/csv', 'application/vnd.ms-excel']
-  validates_attachment_content_type :csv_processed, content_type: ['text/plain', 'text/csv', 'application/vnd.ms-excel']
+  validates_attachment_content_type :csv_original, content_type: ['text/plain', 'text/csv', 'application/vnd.ms-excel', 'application/octet-stream']
+  validates_attachment_content_type :csv_processed, content_type: ['text/plain', 'text/csv', 'application/vnd.ms-excel', 'application/octet-stream']
 
   after_create :process_original_csv!
 
