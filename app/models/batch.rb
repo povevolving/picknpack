@@ -4,8 +4,8 @@ class Batch < ApplicationRecord
   has_attached_file :csv_original
   has_attached_file :csv_processed
 
-  validates_attachment_content_type :csv_original, not: 'image/*'
-  validates_attachment_content_type :csv_processed, not: 'image/*'
+  do_not_validate_attachment_file_type :csv_original
+  do_not_validate_attachment_file_type :csv_processed
 
   after_create :process_original_csv!
 
