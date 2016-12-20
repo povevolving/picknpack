@@ -36,7 +36,7 @@
         </td>
 
         <td class="print-labels <%= 'labels-printed' if batch.label_printed? %>">
-          <%= link_to (batch.label_printed? ? '#' : print_labels_path(batch.id)) do %>
+          <%= link_to (batch.label_printed? ? '#' : print_labels_path(batch.id)), :rel => "nofollow" do %>
             <%= svg_icon_tag :print %>
             
             <% if batch.label_printed? %>
