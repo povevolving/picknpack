@@ -1,2 +1,2 @@
 # Paperclip.options[:content_type_mappings] = { csv: 'application/vnd.ms-excel' }
-Paperclip.options[:content_type_mappings] = {:csv => ["text/comma-separated-values", "text/csv"]}
+Paperclip.options[:content_type_mappings] = {:csv => ["text/comma-separated-values", "text/csv", "application/octet-stream"]}
