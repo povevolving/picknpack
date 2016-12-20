@@ -68,9 +68,13 @@ window.addEventListener("drop", function (e) {
 $(document).on("click", ".print-labels a", function(){
   $(this).parents("td").addClass("printing");
 
-  $.get($(this).attr('href'), (function(){
-    Turbolinks.visit( window.location );
-  }));
+  if($(this).attr('href')) {
+    $.get($(this).attr('href'), (function(){
+      Turbolinks.visit( window.location );
+    }));
+  }
+
+  $(this).removeAttr('href');
 
   return false;
 })
