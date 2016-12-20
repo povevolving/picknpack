@@ -5,7 +5,7 @@ class BatchesController < ApplicationController
   end
 
   def create
-    if @batch = Batch.create(batch_params)
+    if @batch = Batch.create!(batch_params)
       redirect_to :back
     else
       render text: @batch.errors.inspect
